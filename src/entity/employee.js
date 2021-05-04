@@ -1,3 +1,5 @@
+const ROLE = "Employee";
+
 class Employee {
     constructor(name, id, email) {
         this.name = name;
@@ -18,7 +20,7 @@ class Employee {
     }
 
     getRole() {
-        return "Employee";
+        return ROLE;
     }
 }
 
