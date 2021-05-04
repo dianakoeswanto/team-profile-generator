@@ -1,7 +1,7 @@
 const { it, expect } = require("@jest/globals");
 const Engineer = require('../src/entity/engineer');
 
-describe("Intern", () => {
+describe("Engineer", () => {
     it("can instantiate given name, id, email", () => {
         const engineer = new Engineer("Engineer Name", 1, "engineer@example.com");
 
