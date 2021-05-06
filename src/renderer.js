@@ -16,6 +16,10 @@ const memberTemplate =
                 </div>
             </div>`;
 
+/** 
+ * Uses template-file library to replace 
+ * memberTemplate defined above with team member's information 
+ */
 const renderMember = (member, role) => {
     if(member.role === "Engineer") {
         member.otherInfo = `Github: <a href="https://github.com/${member.github}" target="_blank">${member.github}</a>`
@@ -28,6 +32,10 @@ const renderMember = (member, role) => {
     return render(memberTemplate, member);
 }
 
+/**
+ * Reads /template/team.html and replaces the tags with a members' information. 
+ * Each team member is displayed as a card.
+ */
 const renderTeam = (team) => {
     const myTeam = [];
     

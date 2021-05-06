@@ -2,11 +2,17 @@ const inquirer = require('inquirer');
 const Engineer = require('./entity/engineer');
 const Intern = require('./entity/intern'); 
 
+/**
+ * Returns true if email is in a valid format, otherwise false. 
+ */
 const isValidEmail = (email) => {
     const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(email.toLowerCase());
 }
 
+/**
+ * Questions definition relating to an employee
+ */
 const employeeQuestions = (role) => {
     return [
         {
@@ -36,6 +42,9 @@ const employeeQuestions = (role) => {
     ];
 }
 
+/**
+ * Question that asks user which team member they would like to add
+ */
 const teamMemberOptionQuestion = [
     {
         type: 'list',
@@ -45,6 +54,9 @@ const teamMemberOptionQuestion = [
     },
 ];
 
+/**
+ * Questions definition relating to a team manager
+ */
 const teamManagerQuestions = [
     ...employeeQuestions("Team Manager"), 
     {
@@ -57,6 +69,9 @@ const teamManagerQuestions = [
     }
 ];
 
+/**
+ * Questions definition relating to a team member of type engineer
+ */
 const engineerQuestions = [
     ...employeeQuestions("Engineer"), 
     {
@@ -69,6 +84,9 @@ const engineerQuestions = [
     }
 ];
 
+/**
+ * Questions definition relating to a team member of type intern
+ */
 const internQuestions = [
     ...employeeQuestions("Intern"),
     {
@@ -81,22 +99,37 @@ const internQuestions = [
     }
 ];
 
+/**
+ * Prompts user with details of the team manager 
+ */
 const askTeamManagerDetails = () => {
     return inquirer.prompt(teamManagerQuestions);
 }
 
+/**
+ * Prompts user with details of an engineer
+ */
 const askEngineerDetails = () => {
     return inquirer.prompt(engineerQuestions);
 }
 
+/**
+ * Prompts user with details of an intern
+ */
 const askInternDetails = () => {
     return inquirer.prompt(internQuestions);
 }
 
+/**
+ * Prompts user what role they would like to add in their team
+ */
 const askTeamMemberRole = () => {
     return inquirer.prompt(teamMemberOptionQuestion);
 }
 
+/**
+ * Repeatedly prompts user about their team member (engineer or intern) until user selects Done.
+ */
 const askTeamMemberDetails = async (team) => {
     let askAnother = true;
 
@@ -116,4 +149,5 @@ const askTeamMemberDetails = async (team) => {
         }
     }
 }
+
 module.exports = {askTeamManagerDetails, askTeamMemberDetails}
