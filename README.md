@@ -10,7 +10,8 @@ Run `npm install` followed by `npm start`
 Run `npm test`
 
 ## Usage
-Follow the screen prompts
+1. Follow the screen prompts. 
+2. Once completed, a team.html file is produced which lists all members in the team.
 
 ## Walkthrough
 https://drive.google.com/file/d/1Vl16WYl-bP8goZgzEIF9u1ywlpM9s49-/view
